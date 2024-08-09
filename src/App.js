@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { ProductProvider } from './context/ProductContext';
+import { CartProvider } from './context/CartContext';
 
-function App() {
+const Header = lazy(() => import('./components/Shared/Header'));
+const Footer = lazy(() => import('./components/Shared/Footer'));
+const ProductList = lazy(() => import('./components/Product/ProductList'));
+const Cart = lazy(() => import('./components/Cart/Cart'));
+const CheckoutForm = lazy(() => import('./components/Checkout/CheckoutForm'));
+const OrderHistory = lazy(() => import('./components/OrderHistory/OrderHistory'));
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ProductProvider>
+        <CartProvider>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Navigate to="/products" />} />
+              <Route path="/products" element={<ProductList />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<CheckoutForm />} />
+              <Route path="/orders" element={<OrderHistory />} />
+              <Route path="*" element={<div>404 Not Found</div>} />
+            </Routes>
+            <Footer />
+          </Suspense>
+        </CartProvider>
+      </ProductProvider>
+    </Router>
   );
-}
+};
 
 export default App;

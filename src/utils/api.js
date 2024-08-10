@@ -4,5 +4,6 @@ export const fetchOrderHistory = async () => {
     }); // Replace with your API endpoint
     const data = await response.json();
     console.log(data);
+
     return data;
 };

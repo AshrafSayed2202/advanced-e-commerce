@@ -9,7 +9,8 @@ app.use(cors());
 let orders = [];
 // POST endpoint to store data
 app.post("/api/orderpost", async (req, res) => {
-    orders.push(req.body)
+    const { userData, orderDetails } = req.body
+    orders.push({ userData, orderDetails, id: orders.length + 1, date: new Date() })
     console.log(orders);
     res.status(200).send({ message: "User data received" });
 });

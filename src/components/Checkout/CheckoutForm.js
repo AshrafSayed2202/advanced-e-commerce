@@ -25,7 +25,7 @@ const CheckoutForm = () => {
         validationSchema: Yup.object({
             name: Yup.string().required('Name is required'),
             email: Yup.string().email('Invalid email address').required('Email is required'),
-            phone: Yup.string().matches(/^\d{10}$/, 'Phone must be 10 digits').required('Phone is required'),
+            phone: Yup.string().matches(/^\d{11}$/, 'Phone must be 10 digits').required('Phone is required'),
             address: Yup.string().required('Address is required'),
             city: Yup.string().required('City is required'),
             postalCode: Yup.string().matches(/^\d{5}$/, 'Postal Code must be 5 digits').required('Postal Code is required'),

@@ -10,7 +10,7 @@ const Cart = () => {
         if (!cartItems.length) {
             return
         }
-        navigate('/checkout')
+        navigate('/checkout', { state: cartItems })
     }
     return (
         <div className='main-sec'>

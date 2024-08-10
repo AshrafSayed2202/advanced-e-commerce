@@ -21,8 +21,6 @@ export const CartProvider = ({ children }) => {
             // Add new item to cart with a quantity of 1
             setCartItems([...cartItems, { ...item, quantity: 1 }]);
         }
-        console.log(cartItems);
-
     };
     const clearCart = () => {
         setCartItems([])

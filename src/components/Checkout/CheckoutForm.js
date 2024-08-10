@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './CheckoutForm.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import axios from 'axios';
 const CheckoutForm = () => {
+    let location = useLocation();
     const [step, setStep] = useState(1);
     const navigate = useNavigate()
     const { clearCart } = useContext(CartContext)
@@ -33,9 +35,21 @@ const CheckoutForm = () => {
         }),
         validateOnChange: false,
         validateOnBlur: false,
-        onSubmit: () => {
-            clearCart()
-            navigate('/')
+        onSubmit: async (values) => {
+            try {
+                const response = await axios.post(
+                    "http://localhost:5000/api/orderpost",
+                    { userData: values, orderDetails: location.state }
+                );
+                if (response.status === 200) {
+                    clearCart()
+                    navigate('/products')
+                } else {
+                    console.log("Unexpected status code:", response.status);
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+            }
         }
     });
 

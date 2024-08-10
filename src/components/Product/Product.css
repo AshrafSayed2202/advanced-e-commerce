@@ -130,3 +130,9 @@
     background-color: #ff6e7f;
     color: #bfe9ff;
 }
+
+.prod-added,
+.prod-added:hover {
+    background-color: green;
+    color: white;
+}

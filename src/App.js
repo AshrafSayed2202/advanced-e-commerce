@@ -19,7 +19,7 @@ const App = () => {
     <Router>
       <ProductProvider>
         <CartProvider>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<span className='loader'></span>}>
             <Header />
             <Routes>
               <Route path="/" element={<Navigate to="/products" />} />

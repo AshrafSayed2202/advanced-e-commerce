@@ -13,7 +13,7 @@ const OrderHistory = () => {
     }, []);
 
     return (
-        <div>
+        <div className='main-sec'>
             <h2>Order History</h2>
             <ul>
                 {orders.map(order => (

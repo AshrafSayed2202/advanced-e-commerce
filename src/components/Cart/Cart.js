@@ -5,7 +5,7 @@ const Cart = () => {
     const { cartItems, removeItem, getTotal } = useContext(CartContext);
 
     return (
-        <div>
+        <div className='main-sec'>
             <h2>Shopping Cart</h2>
             <ul>
                 {cartItems.map(item => (

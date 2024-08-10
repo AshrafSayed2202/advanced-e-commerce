@@ -74,18 +74,6 @@
     margin-left: 5px;
 }
 
-.prod-description {
-    height: 0;
-    overflow: hidden;
-    transition: all 0.3s;
-    transition-delay: 0.3s;
-    font-size: 12px;
-}
-
-.product-card:hover .prod-description {
-    height: 100px;
-}
-
 .price-rate {
     display: flex;
     justify-content: space-between;
@@ -125,4 +113,20 @@
 
 .rating svg {
     color: goldenrod;
+}
+
+.add-btn {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #bfe9ff;
+    color: #ff6e7f;
+}
+
+.add-btn:hover {
+    background-color: #ff6e7f;
+    color: #bfe9ff;
 }

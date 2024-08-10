@@ -7,7 +7,7 @@ const ProductList = () => {
     const { products } = useContext(ProductContext);
 
     return (
-        <div className='products-list'>
+        <div className='products-list main-sec'>
             {products.map(product => (
                 <ProductItem key={product.id} product={product} />
             ))}

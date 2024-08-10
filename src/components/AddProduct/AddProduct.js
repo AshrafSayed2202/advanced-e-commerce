@@ -17,7 +17,7 @@ const AddProduct = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='main-sec'>
             <input
                 type="text"
                 name="name"

@@ -6,7 +6,23 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addItem = (item) => {
-        setCartItems([...cartItems, item]);
+        const itemExists = cartItems.find(cartItem => cartItem.id === item.id);
+
+        if (itemExists) {
+            // Increase the quantity of the existing item
+            setCartItems(
+                cartItems.map(cartItem =>
+                    cartItem.id === item.id
+                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                        : cartItem
+                )
+            );
+        } else {
+            // Add new item to cart with a quantity of 1
+            setCartItems([...cartItems, { ...item, quantity: 1 }]);
+        }
+        console.log(cartItems);
+
     };
 
     const removeItem = (id) => {

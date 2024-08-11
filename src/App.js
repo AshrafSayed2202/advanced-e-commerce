@@ -9,7 +9,7 @@ library.add(fas)
 const Header = lazy(() => import('./components/Shared/Header'));
 const Footer = lazy(() => import('./components/Shared/Footer'));
 const ProductList = lazy(() => import('./components/Product/ProductList'));
-const AddProduct = lazy(() => import('./components/AddProduct/AddProduct'));
+const Dashboard = lazy(() => import('./components/Dashboard/Dashboard'));
 const Cart = lazy(() => import('./components/Cart/Cart'));
 const CheckoutForm = lazy(() => import('./components/Checkout/CheckoutForm'));
 const OrderHistory = lazy(() => import('./components/OrderHistory/OrderHistory'));
@@ -27,7 +27,7 @@ const App = () => {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<CheckoutForm />} />
               <Route path="/orders" element={<OrderHistory />} />
-              <Route path="/dashboard" element={<AddProduct />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
             <Footer />
